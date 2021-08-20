@@ -30,6 +30,16 @@ static {
         return max;
     }
 
+    static Token maxProfit(List<Token> getTokens){
+        System.out.println("* * * Max Profit * * *");
+        Token max = getTokens.get(0);
+        for (var token:getTokens){
+            if (token.getSell().subtract(token.getBuy()).compareTo(max.getSell().subtract(max.getBuy())) > 0) max = token;
+        }
+        System.out.println(max + "\n" + STARS);
+        return max;
+    }
+
     static void allInfo(List<Token> getTokens) {
         System.out.println("* * * Your tokens * * *");
         System.out.println("NAME    BUY    SELL");

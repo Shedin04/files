@@ -24,5 +24,6 @@ public class Main {
 
         TokenUtil.maxBuy(getTokens);
         TokenUtil.maxSell(getTokens);
+        TokenUtil.maxProfit(getTokens);
     }
 }
