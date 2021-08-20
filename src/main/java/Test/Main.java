@@ -1,3 +1,5 @@
+package Test;
+
 import java.io.*;
 import java.util.Arrays;
 
@@ -7,11 +9,11 @@ public class Main {
         int[] mas = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
         /*write*/
-        /*writeMasToTxt(mas, "D:\\JAVA PROJECTS\\files\\src\\main\\data.txt");
-        writeMasToCsv(mas, "D:\\JAVA PROJECTS\\files\\src\\main\\data.csv");*/
+//        writeMasToTxt(mas, "D:\\JAVA PROJECTS\\files\\src\\main\\java\\Test\\data.txt");
+//        writeMasToCsv(mas, "D:\\JAVA PROJECTS\\files\\src\\main\\java\\Test\\data.csv");
 
         /*read*/
-        double[] getmas = readToDouble("D:\\JAVA PROJECTS\\files\\src\\main\\data.csv");
+        double[] getmas = readToDouble("D:\\JAVA PROJECTS\\files\\src\\main\\java\\Test\\data.csv");
         System.out.println(Arrays.toString(getmas));
     }
 
