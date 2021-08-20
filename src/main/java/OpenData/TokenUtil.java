@@ -36,7 +36,7 @@ static {
         for (var token:getTokens){
             if (token.getSell().subtract(token.getBuy()).compareTo(max.getSell().subtract(max.getBuy())) > 0) max = token;
         }
-        System.out.println(max + "\n" + STARS);
+        System.out.println(max + "\nProfit: $" + max.getSell().subtract(max.getBuy()) + "\n" + STARS);
         return max;
     }
 

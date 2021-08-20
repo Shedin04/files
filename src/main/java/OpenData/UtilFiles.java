@@ -1,14 +1,12 @@
 package OpenData;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UtilFiles {
     private static ArrayList<Token> tokens;
@@ -27,6 +25,30 @@ public class UtilFiles {
                 new InputStreamReader(connection.getInputStream()));
         tokens = getTokens(br);
         return tokens;
+    }
+
+    protected static void writeFile(List<Token> tokens, String name) throws IOException {
+        int i = 0;
+        StringBuilder title = new StringBuilder();
+        title.append("Token;Buy;Sell\n"); // Для строк лучше юзать стрингбилдер
+        FileWriter fwr = new FileWriter(name);
+        fwr.write(String.valueOf(title)); // Записываем стрингбилдер
+        for (var token : tokens) {
+            fwr.write(token.getName() + ";" + token.getBuy() + ";" + token.getSell());
+            i++;
+            if (i < tokens.size()) fwr.write("\n");
+        }
+        fwr.close();
+    }
+
+    protected static void writeToBinaryFile(List<Token> tokens, String name) throws IOException {
+        DataOutputStream dos = new DataOutputStream(new FileOutputStream(name));
+        for (var token: tokens) {
+            dos.writeUTF(token.getName());
+            dos.writeFloat(Float.valueOf(String.valueOf(token.getSell())));
+            dos.writeFloat(Float.valueOf(String.valueOf(token.getBuy())));
+        }
+        dos.close();
     }
 
     private static ArrayList<Token> getTokens(BufferedReader br) throws IOException {

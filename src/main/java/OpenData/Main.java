@@ -1,11 +1,7 @@
 package OpenData;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.Arrays;
+import java.io.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class Main {
@@ -25,5 +21,9 @@ public class Main {
         TokenUtil.maxBuy(getTokens);
         TokenUtil.maxSell(getTokens);
         TokenUtil.maxProfit(getTokens);
+
+        getTokens.add(new Token("Gsg", BigDecimal.valueOf(48000), BigDecimal.valueOf(40000)));
+
+        UtilFiles.writeFile(getTokens, FILENAME);
     }
 }
