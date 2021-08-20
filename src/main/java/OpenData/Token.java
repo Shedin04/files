@@ -37,6 +37,7 @@ public class Token {
         this.sell = sell;
     }
 
+
     @Override
     public String toString() {
         return  name + ": $" + buy + " | $" + sell;

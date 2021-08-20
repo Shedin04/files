@@ -18,11 +18,11 @@ public class Main {
     public static void main(String[] args) throws IOException {
         List<Token> getTokens = UtilFiles.readFile(FILENAME);
         TokenUtil.allInfo(getTokens);
-        /*TokenUtil.maxBuy(getTokens);
-        TokenUtil.maxSell(getTokens);*/
 
-        System.out.println("-------------------");
-        List<Token> getURLTokens = UtilFiles.readURLFile(FILEURL);
-        TokenUtil.allInfo(getURLTokens);
+        /*List<Token> getURLTokens = UtilFiles.readURLFile(FILEURL);
+        TokenUtil.allInfo(getURLTokens);*/
+
+        TokenUtil.maxBuy(getTokens);
+        TokenUtil.maxSell(getTokens);
     }
 }
