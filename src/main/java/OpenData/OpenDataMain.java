@@ -4,7 +4,7 @@ import java.io.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class Main {
+public class OpenDataMain {
     private static String FILENAME;
     private static String FILEURL;
     static {
