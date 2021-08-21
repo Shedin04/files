@@ -1,9 +1,5 @@
 package WithSerializable;
 
-import OpenData.Token;
-import OpenData.TokenUtil;
-import OpenData.UtilFiles;
-
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -19,6 +15,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
+        Tokens.exchange = "Binance"; // static
         tokens = new ArrayList<Tokens>();
         tokens.add(new Tokens("BTC", BigDecimal.valueOf(39000), BigDecimal.valueOf(39500)));
         tokens.add(new Tokens("ETH", BigDecimal.valueOf(3129), BigDecimal.valueOf(3250)));
@@ -28,6 +25,7 @@ public class Main {
         /* Перевод RAM данных в постоянную последовательность байтов*/
         writeToFile(tokens);
 
+//        Tokens.exchange = "Gate.io"; //
         System.out.println(" * After * ");
         getTokens = readFromFile();
         System.out.println(getTokens);
@@ -36,6 +34,7 @@ public class Main {
     private static void writeToFile(List<Tokens> tokens) throws IOException {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILENAME))){
             oos.writeObject(tokens);
+            oos.flush();
         }
     }
 

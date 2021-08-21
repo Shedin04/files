@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class Tokens implements Serializable {
+    protected static String exchange;
     private String name;
     private BigDecimal buy;
-    private BigDecimal sell;
+    private  BigDecimal sell;
+    private transient BigDecimal profit;
 
     public Tokens(){
         /*чтобы не было проблем с десереализацией*/
@@ -17,6 +19,7 @@ public class Tokens implements Serializable {
         this.name = name;
         this.buy = buy;
         this.sell = sell;
+        this.profit = sell.subtract(buy);
     }
 
     public String getName() {
@@ -45,6 +48,6 @@ public class Tokens implements Serializable {
 
     @Override
     public String toString() {
-        return  name + ": $" + buy + " | $" + sell;
+        return  name + ": $" + buy + " | $" + sell + " | profit: " + profit + " | exchange: " + exchange;
     }
 }
