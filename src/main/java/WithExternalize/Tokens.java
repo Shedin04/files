@@ -70,7 +70,7 @@ public class Tokens implements Externalizable {
     }
 
     @Override
-    public void writeExternal(ObjectOutput out) throws IOException {
+    public void writeExternal(ObjectOutput out) throws IOException { //выбираем, что записать
         out.writeObject(name);
         out.writeObject(buy);
     }
