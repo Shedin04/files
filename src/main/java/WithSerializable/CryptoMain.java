@@ -34,7 +34,7 @@ public class CryptoMain {
     private static void writeToFile(List<Tokens> tokens) throws IOException {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILENAME))){
             oos.writeObject(tokens);
-            oos.flush();
+            oos.flush(); // можно не использывать. Объект закрывается сам. Интерфейс Closable
         }
     }
 
