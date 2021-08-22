@@ -1,5 +1,6 @@
 package WithSerializable;
 
+import java.beans.Transient;
 import java.io.*;
 import java.math.BigDecimal;
 
@@ -7,8 +8,8 @@ public class Tokens implements Serializable {
     protected static String exchange;
     private String name;
     private BigDecimal buy;
-    private  BigDecimal sell;
-    private transient BigDecimal profit;
+    private BigDecimal sell;
+    private transient BigDecimal profit; // transient почему-то не работает
 
     public Tokens(){
         /*чтобы не было проблем с десереализацией*/
@@ -55,10 +56,12 @@ public class Tokens implements Serializable {
         this.sell = sell;
     }
 
+    @Transient
     public BigDecimal getProfit() {
         return profit;
     }
 
+    @Transient
     public void setProfit(BigDecimal profit) {
         this.profit = profit;
     }
