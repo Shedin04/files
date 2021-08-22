@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="11.0.11" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="WithSerializable.Tokens">
+    <void property="buy">
+     <object class="java.math.BigDecimal">
+      <string>39000</string>
+     </object>
+    </void>
+    <void property="name">
+     <string>BTC</string>
+    </void>
+    <void property="sell">
+     <object class="java.math.BigDecimal">
+      <string>39500</string>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="WithSerializable.Tokens">
+    <void property="buy">
+     <object class="java.math.BigDecimal">
+      <string>3129</string>
+     </object>
+    </void>
+    <void property="name">
+     <string>ETH</string>
+    </void>
+    <void property="sell">
+     <object class="java.math.BigDecimal">
+      <string>3250</string>
+     </object>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>
