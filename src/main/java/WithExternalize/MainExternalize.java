@@ -13,32 +13,23 @@ public class MainExternalize {
     }
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        Tokens.exchange = "Binance"; // static
         List<Tokens> tokens = new ArrayList<>();
-        tokens.add(new Tokens("BTC", BigDecimal.valueOf(39000), BigDecimal.valueOf(39500)));
-        tokens.add(new Tokens("ETH", BigDecimal.valueOf(3129), BigDecimal.valueOf(3250)));
+        tokens.add(new Tokens("BTC", BigDecimal.valueOf(39000), BigDecimal.valueOf(39500), Exchanges.COINBASE));
+        tokens.add(new Tokens("ETH", BigDecimal.valueOf(3129), BigDecimal.valueOf(3250), Exchanges.BINANCE));
         System.out.println(" * Before * ");
         System.out.println(tokens);
 
-        /* Перевод RAM данных в постоянную последовательность байтов*/
-        writeToFile(tokens);
+        System.out.println("\n * Search tokens by exchange *");
+        TokensUtil.getExchangeToken(tokens, Exchanges.BINANCE);
 
-//        Tokens.exchange = "Gate.io"; // поменяется exchange
-        System.out.println(" * After * ");
-        List<Tokens> getTokens = readFromFile();
-        System.out.println(getTokens);
-    }
+        System.out.println("\n * Total profit *");
+        BigDecimal profit = TokensUtil.getTotalProfit(tokens);
 
-    private static void writeToFile(List<Tokens> tokens) throws IOException {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILENAME))){
-            oos.writeObject(tokens);
-            oos.flush();
-        }
-    }
+        FileUtil.writeToFile(tokens, FILENAME); /* Перевод RAM данных в постоянную последовательность байтов*/
 
-    private static List<Tokens> readFromFile() throws IOException, ClassNotFoundException {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILENAME))) {
-            return (List<Tokens>) ois.readObject();
-        }
+        System.out.println("\n * After * ");
+        tokens.clear();
+        tokens = FileUtil.readFromFile(FILENAME);
+        System.out.println(tokens);
     }
 }
